@@ -1,4 +1,5 @@
 import 'devextreme/dist/css/dx.light.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import Intro from './Components/Intro/Intro';
