@@ -1,7 +1,5 @@
 .contact-form {
     padding: 0 3rem 0 3rem;
-    display: flex;
-    height: 80vh;
     margin-top: 4rem;
 }
 
@@ -39,11 +37,11 @@ textarea {
     left: 8rem;
 }
 
-.c-left {
+/* .c-left {
     display: flex;
     flex-direction: column;
     position: relative;
-}
+} */
 
 .c-left span:nth-of-type(1) {
     color: var(--Gray);
