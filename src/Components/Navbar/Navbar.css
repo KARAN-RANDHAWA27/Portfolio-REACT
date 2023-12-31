@@ -24,16 +24,16 @@
     font-weight: 400;
 }
 
-.n-list {
+/* .n-list {
     flex: 10;
-}
+} */
 
 .n-list>ul {
     display: flex;
     gap: 2rem;
 }
 
-.n-list>ul>li:hover {
+.n-list:hover {
     cursor: pointer;
     color: var(--orange);
 }
@@ -41,3 +41,4 @@
 .n-button {
     flex: 1;
 }
+

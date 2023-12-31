@@ -1,81 +1,112 @@
-import React from 'react'
-import './Services.css'
-import Heart from '../../img/heartemoji.png'
-import Glasses from '../../img/glasses.png'
-import Humble from '../../img/humble.png'
-import Card from '../Card/Card'
-import Resume from '../../CV/CV.pdf'
-import { motion } from 'framer-motion'
-import { Popup } from 'devextreme-react/popup';
-import ScrollView from 'devextreme-react/scroll-view';
-import { useState } from 'react'
+import React from "react";
+import { Grid, Typography, Card, CardContent, Box } from "@mui/material";
+import { Element } from "react-scroll";
+
 const Services = () => {
+  return (
+    <Element name="skills" className="section">
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Card
+            elevation={3}
+            className="box_text"
+            sx={{
+              backgroundImage:
+                "linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%)",
+              color: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            <CardContent>
+              <Typography
+                variant="h6"
+                sx={{
+                  color: "var(--yellow)",
+                  fontSize: "2.5rem",
+                  fontWeight: "bold",
+                }}
+              >
+                What I Know
+              </Typography>
+              <Grid container spacing={2}>
+                {/* Frontend */}
+                <Grid item xs={12} md={4}>
+                  <Card elevation={3}>
+                    <CardContent className="custom-grid">
+                      <Typography variant="h6" color="#fff">
+                        Frontend
+                      </Typography>
+                      <Box className="col-md-5 custom-alert alert alert-dark box_space">
+                        HTML
+                      </Box>
+                      <Box className="col-md-5 custom-alert alert alert-secondary box_space">
+                        CSS
+                      </Box>
+                      <Box className="col-md-5 custom-alert alert alert-success box_space">
+                        JavaScript
+                      </Box>
+                      <Box className="col-md-5 custom-alert alert alert-danger box_space">
+                        React Js
+                      </Box>
+                      <Box className="col-md-5 custom-alert alert alert-warning box_space">
+                        Tailwind
+                      </Box>
+                      <Box className="col-md-5 custom-alert alert alert-info box_space">
+                        MUI
+                      </Box>
+                      <Box className="col-md-5 custom-alert alert alert-dark box_space">
+                        Bootstrap
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
 
-    const transition = {
-        duration: 1,
-        type: "spring",
-    };
+                {/* Backend */}
+                <Grid item xs={12} md={4}>
+                  <Card elevation={3} className="box_text">
+                    <CardContent className="custom-grid">
+                      <Typography variant="h6" color="#fff">
+                        Backend
+                      </Typography>
+                      <Box className="col-md-5 custom-alert alert alert-dark box_space">
+                        Python
+                      </Box>
+                      <Box className="col-md-5 custom-alert alert alert-info box_space">
+                        Django
+                      </Box>
+                      <Box className="col-md-5 custom-alert alert alert-success box_space">
+                        RESTful API
+                      </Box>
+                      <Box className="col-md-5 custom-alert alert alert-info box_space">
+                        Authentication and Authorization
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
 
-    const [showCv, setShowCv] = useState(false);
+                {/* Database */}
+                <Grid item xs={12} md={4}>
+                  <Card elevation={3} className="box_text">
+                    <CardContent className="custom-grid">
+                      <Typography variant="h6" color="#fff">
+                        Database
+                      </Typography>
+                      <Box className="col-md-5 custom-alert alert alert-info box_space">
+                        MySQL
+                      </Box>
+                      <Box className="col-md-5 custom-alert alert alert-info box_space">
+                        MongoDB
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+    </Element>
+  );
+};
 
-    const handleChange = () => {
-        console.log("k");
-        setShowCv(true);
-    }
-
-    const hidePopup = () => {
-        setShowCv(false);
-    }
-    return (
-        <div className="services">
-            <div className="s-left">
-                <span>Services</span>
-                <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit incidunt saepe eos hic nam reprehenderit.
-                    <br />
-                    Laudantium, officia commodi. Ut maxime minima dignissimos necessitatibus corrupti laborum obcaecati non labore, architecto ab.</span>
-                <button className="button s-button" onClick={handleChange}> View CV</button>
-
-            </div>
-
-            <div className="s-right">
-                <div style={{ left: "14rem" }}>
-                    <Card
-                        emoji={Heart}
-                        heading={'Design'}
-                        detail={'Designer'}
-                    />
-                </div>
-                <div style={{ top: "12rem", left: "-4rem" }}>
-                    <Card
-                        emoji={Glasses}
-                        heading={'Developer'}
-                        detail={'Designer'}
-                    />
-                </div>
-                <div style={{ top: "19rem", left: "12rem" }}>
-                    <Card
-                        emoji={Humble}
-                        heading={'Tester'}
-                        detail={'Designer'}
-                    />
-                </div>
-                <div className="blur s-blur2" style={{ background: "var(--purple)" }}></div>
-            </div>
-            {showCv && <Popup
-                visible={setShowCv}
-                onHiding={hidePopup}
-                dragEnabled={false}
-                showTitle={true}
-                title='Karan Randhawa Resume'
-                width="auto"
-                height="auto"
-            ><ScrollView width='100%' height='100%'>
-                    <Resume
-                    ></Resume>
-                </ScrollView>
-
-            </Popup>}
-        </div>)
-}
-
-export default Services
+export default Services;

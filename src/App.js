@@ -1,4 +1,5 @@
 import 'devextreme/dist/css/dx.light.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import Intro from './Components/Intro/Intro';
@@ -16,20 +17,15 @@ function App() {
   const theme = useContext(themeContext)
   const darkMode = theme.state.darkMode
   return (
-    <div className="App"
-      style={{
-        background: darkMode ? 'black' : '',
-        color: darkMode ? 'white' : '',
-      }}
-    >
+    <div className="App">
       <Navbar></Navbar>
       <Intro></Intro>
       <Services></Services>
-      <Experience></Experience>
+      {/* <Experience></Experience> */}
       <Projects></Projects>
-      <Works></Works>
+      {/* <Works></Works> */}
       <Contact></Contact>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }
