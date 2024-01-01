@@ -92,3 +92,7 @@ html, body {
   background: none !important;
   box-shadow: none !important;
 }
+
+.navbar{
+color: var(--orange);
+}
