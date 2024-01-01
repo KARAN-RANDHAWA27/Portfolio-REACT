@@ -14,7 +14,7 @@ import Toggle from "../Toggle/Toggle";
 import CV from "../../CV/CV_2024.pdf";
 import { Link, Element, scroller } from "react-scroll";
 
-const pages = ["Home", "Skills", "Projects", "Experience", "Contact"];
+const pages = ["Home", "Skills", "Projects", "Contact"];
 const navItemStyle = {
   background: "none",
   "&:hover": {
@@ -67,9 +67,28 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+                <Link
+                  className="navbar"
+                  style={{ textDecoration: "none" }}
+                  to={
+                    page.toLocaleLowerCase() === "home"
+                      ? "intro"
+                      : page.toLocaleLowerCase() === "projects"
+                      ? "projects"
+                      : page.toLocaleLowerCase() === "skills"
+                      ? "skills"
+                      : "contact"
+                  }
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  offset={-50}
+                  isDynamic={true}
+                >
+                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -123,11 +142,9 @@ const Navbar = () => {
               isDynamic={true}
             >
               <Button
-                // key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "#fff", display: "block", ...navItemStyle }}
               >
-                {/* {page} */}
                 Projects
               </Button>
             </Link>

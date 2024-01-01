@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./contact.css";
+import emailjs from "@emailjs/browser";
 import {
   Box,
   Button,
@@ -17,7 +18,9 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [done, setDone] = useState(false);
 
+  const form = useRef();
   const handleNameChange = (event) => {
     const updatedValue = event.target.value.replace(/[^A-Za-z]/g, "");
     setName(updatedValue);
@@ -33,6 +36,28 @@ const Contact = () => {
       ""
     );
     setEmail(updatedValue);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_bd6omkv",
+        "template_ext8tjb",
+        form.current,
+        "H2xDnK8Bw8V0cPJpp"
+      )
+      .then(
+        (result) => {
+          setDone(true);
+          setName("");
+          setEmail("");
+          setMessage("");
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
 
   return (
@@ -90,6 +115,7 @@ const Contact = () => {
                             marginBottom: 6,
                             marginTop: 6,
                           }}
+                          ref={form}
                         >
                           <TextField
                             focused
@@ -101,7 +127,8 @@ const Contact = () => {
                             onChange={handleNameChange}
                             inputProps={{
                               maxLength: 30,
-                              style: { color: "white" }, // Optional: Limit the maximum number of characters
+                              style: { color: "white" },
+                              name: "Name",
                             }}
                             fullWidth
                           ></TextField>
@@ -114,7 +141,8 @@ const Contact = () => {
                             value={email}
                             inputProps={{
                               maxLength: 30,
-                              style: { color: "white" }, // Optional: Limit the maximum number of characters
+                              style: { color: "white" },
+                              name: "Email",
                             }}
                             sx={{ marginBottom: 4 }}
                             fullWidth
@@ -127,18 +155,29 @@ const Contact = () => {
                             onChange={handleMessageChange}
                             value={message}
                             inputProps={{
-                              style: { color: "white" }, // Optional: Limit the maximum number of characters
+                              style: { color: "white" },
+                              name: "Message",
                             }}
                             fullWidth
                             multiline
                             rows={3} // Set the number of visible rows
-                            maxRows={10}
                             sx={{ marginBottom: 2 }}
                           ></TextField>
+                          <Button
+                            className="button"
+                            disabled={
+                              name === "" || email === "" || message === ""
+                            }
+                            onClick={handleSubmit}
+                          >
+                            Send
+                          </Button>
                         </form>
-                        <Button className="button">Send</Button>
                       </Box>
                     </CardContent>
+                    <Typography className="custom-grid" color="#fff">
+                      {done && "Thanks for Contacting me"}
+                    </Typography>
                   </Card>
                 </Grid>
               </Grid>
