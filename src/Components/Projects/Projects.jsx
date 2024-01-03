@@ -115,7 +115,7 @@ const Projects = () => {
                   xs={12}
                   md={3}
                   style={{ cursor: "pointer" }}
-                  onClick={handleTicTacToe}
+                  // onClick={handleTicTacToe}
                 >
                   <Card elevation={3}>
                     <CardContent className="custom-grid">
@@ -157,7 +157,7 @@ const Projects = () => {
                   xs={12}
                   md={3}
                   style={{ cursor: "pointer" }}
-                  onClick={handleTicTacToe}
+                  // onClick={handleTicTacToe}
                 >
                   <Card elevation={3}>
                     <CardContent className="custom-grid">
